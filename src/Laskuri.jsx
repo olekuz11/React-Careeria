@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 //Propsi otettu vastaan suoraan nimellä
 const Laskuri = ({ huomio }) => {
 
-    // Komponentin tilan määritys
-  const [luku, setLuku] = useState(0)
+// Komponentin tilan määritys
+const [luku, setLuku] = useState(0)
 
   return (
     <>

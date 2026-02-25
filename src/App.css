@@ -78,7 +78,7 @@ button:hover {
   background: #f5ebe0;
 }
 
-/* --- Posts grid --- */
+/* --- Post grid --- */
 
 .posts-container {
   display: grid;
@@ -114,6 +114,27 @@ button:hover {
 }
 
 .post-number {
+  font-size: 11px;
+  color: #c8a97e;
+  font-weight: bold;
+}
+
+.post-card {
+  cursor: pointer;
+}
+
+.post-card-auki {
+  border-color: #c8a97e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.post-details {
+  margin-top: 10px;
+  border-top: 1px solid #e5d5c0;
+  padding-top: 10px;
+}
+
+.post-user {
   font-size: 11px;
   color: #c8a97e;
   font-weight: bold;
