@@ -1,38 +1,120 @@
 .App {
   text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #3d2b1f;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #3d2b1f;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  color: #5a3e2b;
+  margin-bottom: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h3 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #5a3e2b;
+}
+
+/* --- Navigation buttons (Näytä laskuri / Näytä postaukset) --- */
+
+.napit {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  margin-bottom: 28px;
 }
 
-.App-link {
-  color: #61dafb;
+.napit button {
+  padding: 10px 22px;
+  border: 2px solid #c8a97e;
+  background: #fff;
+  color: #5a3e2b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.napit button:hover {
+  background: #f5ebe0;
+}
+
+/* --- Laskuri buttons --- */
+
+button {
+  padding: 8px 18px;
+  border: 2px solid #c8a97e;
+  background: #fdf6ec;
+  color: #5a3e2b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #f0dcc4;
+}
+
+.laskuri-napit {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.huomio-nappi {
+  margin-left: 8px;
+  border-color: #a07850;
+  background: #f5ebe0;
+}
+
+/* --- Posts grid --- */
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.post-card {
+  background: #fdf6ec;
+  border: 1px solid #e5d5c0;
+  border-radius: 10px;
+  padding: 16px;
+  transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.post-card h4 {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #5a3e2b;
+  text-transform: capitalize;
+}
+
+.post-card p {
+  font-size: 13px;
+  color: #7a6350;
+  margin: 0;
+}
+
+.post-number {
+  font-size: 11px;
+  color: #c8a97e;
+  font-weight: bold;
 }
