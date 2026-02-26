@@ -24,7 +24,7 @@ h3 {
   color: #5a3e2b;
 }
 
-/* --- Navigation buttons (Näytä laskuri / Näytä postaukset) --- */
+/* --- Navigation buttons --- */
 
 .napit {
   display: flex;
@@ -48,7 +48,7 @@ h3 {
   background: #f5ebe0;
 }
 
-/* --- Laskuri buttons --- */
+/* --- Buttons --- */
 
 button {
   padding: 8px 18px;
@@ -78,7 +78,7 @@ button:hover {
   background: #f5ebe0;
 }
 
-/* --- Post grid --- */
+/* --- Cards --- */
 
 .posts-container {
   display: grid;
@@ -93,6 +93,7 @@ button:hover {
   border: 1px solid #e5d5c0;
   border-radius: 10px;
   padding: 16px;
+  cursor: pointer;
   transition: box-shadow 0.2s;
 }
 
@@ -119,10 +120,6 @@ button:hover {
   font-weight: bold;
 }
 
-.post-card {
-  cursor: pointer;
-}
-
 .post-card-auki {
   border-color: #c8a97e;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -139,6 +136,8 @@ button:hover {
   color: #c8a97e;
   font-weight: bold;
 }
+
+/* --- Customer table --- */
 
 .customer-table {
   width: 100%;
@@ -158,6 +157,8 @@ button:hover {
   padding: 4px 0;
   color: #7a6350;
 }
+
+/* --- Customer form --- */
 
 .customer-form {
   display: flex;
@@ -195,18 +196,28 @@ button:hover {
   background: #f0dcc4;
 }
 
-.message-ok {
-  padding: 10px 16px;
+/* --- Messages --- */
+
+.pos {
+  padding: 12px 20px;
   border-radius: 8px;
   margin-bottom: 16px;
   background: #d4edda;
   color: #3a6b47;
+  font-weight: bold;
+  font-size: 15px;
+  border-left: 4px solid #3a6b47;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.message-error {
-  padding: 10px 16px;
+.neg {
+  padding: 12px 20px;
   border-radius: 8px;
   margin-bottom: 16px;
   background: #f8d7da;
   color: #842029;
+  font-weight: bold;
+  font-size: 15px;
+  border-left: 4px solid #842029;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }

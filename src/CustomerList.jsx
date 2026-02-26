@@ -4,10 +4,9 @@ import customerService from './services/Customer'
 import Customer from './Customer'
 import CustomerAdd from './CustomerAdd'
 
-const CustomerList = () => {
+const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
   const [customers, setCustomers] = useState([])
   const [lisäystila, setLisäystila] = useState(false)
-  const [message, setMessage] = useState(null)
 
   useEffect(() => {
     customerService.getAll().then(data => setCustomers(data))
@@ -16,20 +15,19 @@ const CustomerList = () => {
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-            <h2>Customers</h2>
-            {!lisäystila && (
-              <button onClick={() => setLisäystila(true)}>Lisää uusi</button>
+        <h2>Customers</h2>
+        {!lisäystila && (
+          <button onClick={() => setLisäystila(true)}>Lisää uusi</button>
         )}
       </div>
 
-      {message && (
-        <div className={message.ok ? 'message-ok' : 'message-error'}>
-          {message.text}
-        </div>
-      )}
-
       {lisäystila && (
-        <CustomerAdd setLisäystila={setLisäystila} setMessage={setMessage} />
+        <CustomerAdd
+          setLisäystila={setLisäystila}
+          setIsPositive={setIsPositive}
+          setMessage={setMessage}
+          setShowMessage={setShowMessage}
+        />
       )}
 
       <div className="posts-container">

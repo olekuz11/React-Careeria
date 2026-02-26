@@ -2,9 +2,7 @@ import './App.css'
 import React, { useState } from 'react'
 import customerService from './services/Customer'
 
-const CustomerAdd = ({ setLisäystila, setMessage }) => {
-
-    // Komponentin tilan määritys
+const CustomerAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage }) => {
 
   const [newCustomerId, setNewCustomerId] = useState('')
   const [newCompanyName, setNewCompanyName] = useState('')
@@ -17,7 +15,6 @@ const CustomerAdd = ({ setLisäystila, setMessage }) => {
   const [newPhone, setNewPhone] = useState('')
   const [newFax, setNewFax] = useState('')
 
-  // onSubmit tapahtumankäsittelijä funktio
   const handleSubmit = (event) => {
     event.preventDefault()
     const newCustomer = {
@@ -36,14 +33,18 @@ const CustomerAdd = ({ setLisäystila, setMessage }) => {
     customerService.create(newCustomer)
       .then(response => {
         if (response.status === 200) {
-          setMessage({ text: 'Asiakas ' + newCustomer.companyName + ' lisätty!', ok: true })
-          setTimeout(() => setMessage(null), 5000)
+          setMessage('Asiakas ' + newCustomer.companyName + ' lisätty!')
+          setIsPositive(true)
+          setShowMessage(true)
+          setTimeout(() => setShowMessage(false), 8000)
           setLisäystila(false)
         }
       })
       .catch(error => {
-        setMessage({ text: error.message, ok: false })
-        setTimeout(() => setMessage(null), 6000)
+        setMessage(error.message)
+        setIsPositive(false)
+        setShowMessage(true)
+        setTimeout(() => setShowMessage(false), 8000)
       })
   }
 
