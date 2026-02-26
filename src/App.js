@@ -3,6 +3,7 @@ import './App.css'
 import Laskuri from './Laskuri'
 import Viesti from './Viesti'
 import Posts from './Posts'
+import CustomerList from './CustomerList'
 
 const App = () => {
 
@@ -24,11 +25,15 @@ const App = () => {
         <button onClick={() => setAktiivinen(aktiivinen === 'posts' ? null : 'posts')}>
           {aktiivinen === 'posts' ? 'Piilota postaukset' : 'Näytä postaukset'}
         </button>
+
+        <button onClick={() => setAktiivinen(aktiivinen === 'customers' ? null : 'customers')}>
+           {aktiivinen === 'customers' ? 'Piilota customers' : 'Näytä customers'}
+        </button>
       </div>
 
       {aktiivinen === 'laskuri' && <Laskuri huomio={huomio} />}
       {aktiivinen === 'posts' && <Posts />}
-
+      {aktiivinen === 'customers' && <CustomerList />}
       <Viesti teksti="Tämä on viesti komponentista!" />
 
     </div>

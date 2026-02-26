@@ -139,3 +139,22 @@ button:hover {
   color: #c8a97e;
   font-weight: bold;
 }
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.customer-table th {
+  color: #c8a97e;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e5d5c0;
+}
+
+.customer-table td {
+  padding: 4px 0;
+  color: #7a6350;
+}
