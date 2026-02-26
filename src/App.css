@@ -158,3 +158,55 @@ button:hover {
   padding: 4px 0;
   color: #7a6350;
 }
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customer-form input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #e5d5c0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #3d2b1f;
+  background: #fff;
+  outline: none;
+}
+
+.customer-form input[type="text"]:focus {
+  border-color: #c8a97e;
+}
+
+.customer-form input[type="submit"],
+.customer-form input[type="button"] {
+  padding: 8px 18px;
+  border: 2px solid #c8a97e;
+  background: #fdf6ec;
+  color: #5a3e2b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.customer-form input[type="submit"]:hover,
+.customer-form input[type="button"]:hover {
+  background: #f0dcc4;
+}
+
+.message-ok {
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #d4edda;
+  color: #3a6b47;
+}
+
+.message-error {
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #f8d7da;
+  color: #842029;
+}
