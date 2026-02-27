@@ -174,6 +174,24 @@ button:hover {
   border-color: #c8a97e;
 }
 
+.customer-form input[type="email"],
+.customer-form input[type="password"],
+.customer-form input[type="number"] {
+  padding: 8px 12px;
+  border: 1px solid #e5d5c0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #3d2b1f;
+  background: #fff;
+  outline: none;
+}
+
+.customer-form input[type="email"]:focus,
+.customer-form input[type="password"]:focus,
+.customer-form input[type="number"]:focus {
+  border-color: #c8a97e;
+}
+
 .customer-form input[type="submit"],
 .customer-form input[type="button"] {
   padding: 8px 18px;

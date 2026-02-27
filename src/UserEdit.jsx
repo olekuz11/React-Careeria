@@ -20,7 +20,7 @@ const UserEdit = ({ setMuokkaustila, setIsPositive, setMessage, setShowMessage, 
       lastName: newLastName,
       email: newEmail,
       userName: newUserName,
-      password: newPassword ? md5(newPassword) : muokattavaUser.password,
+      password: newPassword ? md5(newPassword) : null,
       accesslevelId: parseInt(newAccesslevelId)
     }
 
