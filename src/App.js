@@ -4,11 +4,17 @@ import Laskuri from './Laskuri'
 import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
+import UserList from './UserList'
 import Message from './Message'
+
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
 
-  const [aktiivinen, setAktiivinen] = useState(null)
   const [showMessage, setShowMessage] = useState(false)
   const [message, setMessage] = useState('')
   const [isPositive, setIsPositive] = useState(false)
@@ -19,30 +25,32 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Welcome to my React App!</h1>
+      <Router>
+         <Navbar bg="dark" variant="dark">
+            <Nav className="mr-auto">
+              <Nav.Link href='/customers'>Asiakkaat</Nav.Link>
+              <Nav.Link href='/posts'>Postaukset</Nav.Link>
+              <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+            </Nav>
+            <Nav className="ms-auto">
+              <Nav.Link href='/users'>Käyttäjät</Nav.Link>
+            </Nav>
+          </Navbar>
 
-      {showMessage && <Message message={message} isPositive={isPositive} />}
+        <h1>Northwind Traders</h1>
 
-      <div className="napit">
-        <button onClick={() => setAktiivinen(aktiivinen === 'laskuri' ? null : 'laskuri')}>
-          {aktiivinen === 'laskuri' ? 'Piilota laskuri' : 'Näytä laskuri'}
-        </button>
+        {showMessage && <Message message={message} isPositive={isPositive} />}
 
-        <button onClick={() => setAktiivinen(aktiivinen === 'posts' ? null : 'posts')}>
-          {aktiivinen === 'posts' ? 'Piilota postaukset' : 'Näytä postaukset'}
-        </button>
+        <Routes>
+          <Route path="/customers" element={<CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />} />
+          <Route path="/users" element={<UserList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/laskuri" element={<Laskuri huomio={huomio} />} />
+        </Routes>
 
-        <button onClick={() => setAktiivinen(aktiivinen === 'customers' ? null : 'customers')}>
-          {aktiivinen === 'customers' ? 'Piilota asiakkaat' : 'Näytä asiakkaat'}
-        </button>
-      </div>
+        <Viesti teksti="Tämä on viesti komponentista!" />
 
-      {aktiivinen === 'laskuri' && <Laskuri huomio={huomio} />}
-      {aktiivinen === 'posts' && <Posts />}
-      {aktiivinen === 'customers' && <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />}
-
-      <Viesti teksti="Tämä on viesti komponentista!" />
-
+      </Router>
     </div>
   )
 }

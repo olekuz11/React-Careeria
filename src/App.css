@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   max-width: 900px;
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 0 20px;
   font-family: 'Segoe UI', sans-serif;
   color: #3d2b1f;
@@ -10,6 +10,7 @@
 h1 {
   font-size: 2rem;
   margin-bottom: 24px;
+  margin-top: 24px;
   color: #3d2b1f;
 }
 
@@ -24,28 +25,21 @@ h3 {
   color: #5a3e2b;
 }
 
-/* --- Navigation buttons --- */
+/* --- Navbar --- */
 
-.napit {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 28px;
+.navbar {
+  margin-bottom: 30px;
 }
 
-.napit button {
-  padding: 10px 22px;
-  border: 2px solid #c8a97e;
-  background: #fff;
-  color: #5a3e2b;
-  border-radius: 8px;
-  cursor: pointer;
+.navbar .nav-link {
+  color: #c8a97e !important;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 15px;
-  transition: background 0.2s, color 0.2s;
+  transition: color 0.2s;
 }
 
-.napit button:hover {
-  background: #f5ebe0;
+.navbar .nav-link:hover {
+  color: #fff !important;
 }
 
 /* --- Buttons --- */
@@ -196,6 +190,16 @@ button:hover {
   background: #f0dcc4;
 }
 
+.customer-form label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 13px;
+  color: #c8a97e;
+  font-weight: bold;
+  gap: 4px;
+}
+
 /* --- Messages --- */
 
 .pos {
@@ -222,15 +226,7 @@ button:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.customer-form label {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  font-size: 13px;
-  color: #c8a97e;
-  font-weight: bold;
-  gap: 4px;
-}
+/* --- Search --- */
 
 .search-input {
   padding: 8px 14px;
@@ -250,4 +246,35 @@ button:hover {
 
 .search-input:focus {
   border-color: #c8a97e;
+}
+
+.user-table-full {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.user-table-full th {
+  color: #c8a97e;
+  border-bottom: 2px solid #e5d5c0;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.user-table-full td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0e6d6;
+  color: #5a3e2b;
+}
+
+.user-table-full tr:hover {
+  background: #fdf6ec;
+}
+
+.user-table-full button {
+  padding: 4px 10px;
+  font-size: 12px;
+  margin-right: 4px;
 }
