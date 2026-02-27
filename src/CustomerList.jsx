@@ -11,6 +11,7 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
   const [muokkaustila, setMuokkaustila] = useState(false)
   const [muokattavaCustomer, setMuokattavaCustomer] = useState(null)
   const [reload, setReload] = useState(false)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     customerService.getAll().then(data => setCustomers(data))
@@ -19,6 +20,10 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
   const editCustomer = (customer) => {
     setMuokattavaCustomer(customer)
     setMuokkaustila(true)
+  }
+
+  const handleSearchInputChange = (event) => {
+    setSearch(event.target.value.toLowerCase())
   }
 
   return (
@@ -50,20 +55,30 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
       )}
 
       {!lisäystila && !muokkaustila && (
-        <div className="posts-container">
-          {customers && customers.map(c => (
-            <Customer
-              key={c.customerId}
-              customer={c}
-              setIsPositive={setIsPositive}
-              setMessage={setMessage}
-              setShowMessage={setShowMessage}
-              reload={reload}
-              reloadNow={setReload}
-              editCustomer={editCustomer}
-            />
-          ))}
-        </div>
+        <>
+          <input
+            className="search-input"
+            placeholder="Hae yrityksen nimellä..."
+            value={search}
+            onChange={handleSearchInputChange}
+          />
+          <div className="posts-container">
+            {customers && customers
+              .filter(c => c.companyName.toLowerCase().indexOf(search) > -1)
+              .map(c => (
+                <Customer
+                  key={c.customerId}
+                  customer={c}
+                  setIsPositive={setIsPositive}
+                  setMessage={setMessage}
+                  setShowMessage={setShowMessage}
+                  reload={reload}
+                  reloadNow={setReload}
+                  editCustomer={editCustomer}
+                />
+              ))}
+          </div>
+        </>
       )}
     </>
   )
