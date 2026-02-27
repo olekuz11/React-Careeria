@@ -49,20 +49,22 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
         />
       )}
 
-      <div className="posts-container">
-        {customers && customers.map(c => (
-          <Customer
-            key={c.customerId}
-            customer={c}
-            setIsPositive={setIsPositive}
-            setMessage={setMessage}
-            setShowMessage={setShowMessage}
-            reload={reload}
-            reloadNow={setReload}
-            editCustomer={editCustomer}
-          />
-        ))}
-      </div>
+      {!lisäystila && !muokkaustila && (
+        <div className="posts-container">
+          {customers && customers.map(c => (
+            <Customer
+              key={c.customerId}
+              customer={c}
+              setIsPositive={setIsPositive}
+              setMessage={setMessage}
+              setShowMessage={setShowMessage}
+              reload={reload}
+              reloadNow={setReload}
+              editCustomer={editCustomer}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }
