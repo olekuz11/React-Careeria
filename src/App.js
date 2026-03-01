@@ -41,6 +41,10 @@ const App = () => {
   const logout = () => {
     localStorage.clear()
     setLoggedInUser('')
+    setMessage('Kirjauduttu ulos onnistuneesti!')
+    setIsPositive(true)
+    setShowMessage(true)
+    setTimeout(() => setShowMessage(false), 4000)
   }
 
   return (
