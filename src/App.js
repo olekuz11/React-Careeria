@@ -5,10 +5,12 @@ import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
 import UserList from './UserList'
+import ProductList from './ProductList'
 import Message from './Message'
 import Login from './Login'
 import customerService from './services/Customer'
 import userService from './services/User'
+import productService from './services/Product'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -37,6 +39,7 @@ const App = () => {
       setLoggedInUser(storedUser)
       customerService.setToken(storedToken)
       userService.setToken(storedToken)
+      productService.setToken(storedToken)
       if (storedLevel !== null) {
         setAccessLevel(parseInt(storedLevel))
       }
@@ -67,6 +70,7 @@ const App = () => {
             setToken={(token) => {
               customerService.setToken(token)
               userService.setToken(token)
+              productService.setToken(token)
             }}
           />
         </>
@@ -122,6 +126,10 @@ const App = () => {
 
             <Route path="/users" element={
               <UserList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
+            } />
+
+            <Route path="/products" element={
+              <ProductList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
             } />
 
             <Route path="/posts" element={<Posts />} />
