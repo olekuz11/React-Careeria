@@ -10,10 +10,16 @@ const UserAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage }) 
   const [newEmail, setNewEmail] = useState('')
   const [newUserName, setNewUserName] = useState('')
   const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [newAccesslevelId, setNewAccesslevelId] = useState(2)
+
+  const passwordsMatch = newPassword === confirmPassword && newPassword !== ''
+  const passwordMismatch = confirmPassword !== '' && newPassword !== confirmPassword
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (!passwordsMatch) return
+
     const newUser = {
       firstName: newFirstName,
       lastName: newLastName,
@@ -60,14 +66,23 @@ const UserAdd = ({ setLisäystila, setIsPositive, setMessage, setShowMessage }) 
           <input type="text" value={newUserName} placeholder="Käyttäjänimi" onChange={({ target }) => setNewUserName(target.value)} />
         </label>
         <label>Salasana
-          <input type="password" value={newPassword} placeholder="Salasana" onChange={({ target }) => setNewPassword(target.value)} />
+          <input type="password" value={newPassword} placeholder="Salasana" onChange={({ target }) => setNewPassword(target.value)} required />
         </label>
+        <label>Vahvista salasana
+          <input type="password" value={confirmPassword} placeholder="Vahvista salasana" onChange={({ target }) => setConfirmPassword(target.value)} required />
+        </label>
+        {passwordMismatch && (
+          <p style={{ color: 'red', margin: '4px 0' }}>Salasanat eivät täsmää!</p>
+        )}
+        {passwordsMatch && (
+          <p style={{ color: 'green', margin: '4px 0' }}>Salasanat täsmäävät ✓</p>
+        )}
         <label>Käyttöoikeustaso
           <input type="number" value={newAccesslevelId} placeholder="Käyttöoikeustaso" onChange={({ target }) => setNewAccesslevelId(target.value)} />
         </label>
 
         <div className="laskuri-napit" style={{ marginTop: '12px' }}>
-          <input type="submit" value="Tallenna" />
+          <input type="submit" value="Tallenna" disabled={!passwordsMatch} />
           <input type="button" value="Peruuta" onClick={() => setLisäystila(false)} />
         </div>
       </form>
