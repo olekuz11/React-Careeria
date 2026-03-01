@@ -6,11 +6,13 @@ import Posts from './Posts'
 import CustomerList from './CustomerList'
 import UserList from './UserList'
 import ProductList from './ProductList'
+import EmployeeList from './EmployeeList'
 import Message from './Message'
 import Login from './Login'
 import customerService from './services/Customer'
 import userService from './services/User'
 import productService from './services/Product'
+import employeeService from './services/Employee'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -40,6 +42,7 @@ const App = () => {
       customerService.setToken(storedToken)
       userService.setToken(storedToken)
       productService.setToken(storedToken)
+      employeeService.setToken(storedToken)
       if (storedLevel !== null) {
         setAccessLevel(parseInt(storedLevel))
       }
@@ -71,6 +74,7 @@ const App = () => {
               customerService.setToken(token)
               userService.setToken(token)
               productService.setToken(token)
+              employeeService.setToken(token)
             }}
           />
         </>
@@ -90,6 +94,10 @@ const App = () => {
 
               <LinkContainer to="/products">
                 <Nav.Link>Tuotteet</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to="/employees">
+                <Nav.Link>Henkilöstö</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/posts">
@@ -130,6 +138,10 @@ const App = () => {
 
             <Route path="/products" element={
               <ProductList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
+            } />
+
+            <Route path="/employees" element={
+              <EmployeeList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
             } />
 
             <Route path="/posts" element={<Posts />} />
