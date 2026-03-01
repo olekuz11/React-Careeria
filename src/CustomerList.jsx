@@ -5,7 +5,7 @@ import Customer from './Customer'
 import CustomerAdd from './CustomerAdd'
 import CustomerEdit from './CustomerEdit'
 
-const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
+const CustomerList = ({ setIsPositive, setMessage, setShowMessage, accessLevel }) => {
   const [customers, setCustomers] = useState([])
   const [lisäystila, setLisäystila] = useState(false)
   const [muokkaustila, setMuokkaustila] = useState(false)
@@ -44,7 +44,7 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
         />
       )}
 
-      {muokkaustila && muokattavaCustomer && (
+      {muokkaustila && muokattavaCustomer && accessLevel === 1 && (
         <CustomerEdit
           setMuokkaustila={setMuokkaustila}
           setIsPositive={setIsPositive}
@@ -75,6 +75,7 @@ const CustomerList = ({ setIsPositive, setMessage, setShowMessage }) => {
                   reload={reload}
                   reloadNow={setReload}
                   editCustomer={editCustomer}
+                  accessLevel={accessLevel}
                 />
               ))}
           </div>

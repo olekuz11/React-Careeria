@@ -23,6 +23,7 @@ const App = () => {
   const [message, setMessage] = useState('')
   const [isPositive, setIsPositive] = useState(false)
   const [loggedInUser, setLoggedInUser] = useState('')
+  const [accessLevel, setAccessLevel] = useState(1)
 
   const huomio = () => {
     alert("Huomio!")
@@ -31,16 +32,21 @@ const App = () => {
   useEffect(() => {
     let storedUser = localStorage.getItem("username")
     let storedToken = localStorage.getItem("token")
+    let storedLevel = localStorage.getItem("accesslevelId")
     if (storedUser !== null) {
       setLoggedInUser(storedUser)
       customerService.setToken(storedToken)
       userService.setToken(storedToken)
+      if (storedLevel !== null) {
+        setAccessLevel(parseInt(storedLevel))
+      }
     }
   }, [])
 
   const logout = () => {
     localStorage.clear()
     setLoggedInUser('')
+    setAccessLevel(1)
     setMessage('Kirjauduttu ulos onnistuneesti!')
     setIsPositive(true)
     setShowMessage(true)
@@ -57,6 +63,7 @@ const App = () => {
             setIsPositive={setIsPositive}
             setShowMessage={setShowMessage}
             setLoggedInUser={setLoggedInUser}
+            setAccessLevel={setAccessLevel}
             setToken={(token) => {
               customerService.setToken(token)
               userService.setToken(token)
@@ -105,11 +112,11 @@ const App = () => {
             <Route path="/" element={<Viesti teksti="Tämä on viesti komponentista!" />} />
 
             <Route path="/customers" element={
-              <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />
+              <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
             } />
 
             <Route path="/users" element={
-              <UserList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} />
+              <UserList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage} accessLevel={accessLevel} />
             } />
 
             <Route path="/posts" element={<Posts />} />

@@ -2,7 +2,7 @@ import './App.css'
 import React, { useState } from 'react'
 import customerService from './services/Customer'
 
-const Customer = ({ customer, setIsPositive, setMessage, setShowMessage, reload, reloadNow, editCustomer }) => {
+const Customer = ({ customer, setIsPositive, setMessage, setShowMessage, reload, reloadNow, editCustomer, accessLevel }) => {
   const [showDetails, setShowDetails] = useState(false)
 
   const deleteCustomer = (customer) => {
@@ -65,10 +65,12 @@ const Customer = ({ customer, setIsPositive, setMessage, setShowMessage, reload,
               </tr>
             </tbody>
           </table>
-          <div className="laskuri-napit" style={{ marginTop: '10px' }}>
-            <button onClick={(e) => { e.stopPropagation(); editCustomer(customer) }}>Edit</button>
-            <button onClick={(e) => { e.stopPropagation(); deleteCustomer(customer) }}>Delete</button>
-          </div>
+          {accessLevel === 1 && (
+            <div className="laskuri-napit" style={{ marginTop: '10px' }}>
+              <button onClick={(e) => { e.stopPropagation(); editCustomer(customer) }}>Edit</button>
+              <button onClick={(e) => { e.stopPropagation(); deleteCustomer(customer) }}>Delete</button>
+            </div>
+          )}
         </div>
       )}
     </div>

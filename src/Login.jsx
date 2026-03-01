@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import authService from './services/Auth'
 import md5 from 'md5'
 
-const Login = ({ setIsPositive, setMessage, setShowMessage, setLoggedInUser, setToken }) => {
+const Login = ({ setIsPositive, setMessage, setShowMessage, setLoggedInUser, setToken, setAccessLevel }) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -25,6 +25,7 @@ const Login = ({ setIsPositive, setMessage, setShowMessage, setLoggedInUser, set
 
           setLoggedInUser(response.data.username)
           setToken(response.data.token)
+          setAccessLevel(response.data.accesslevelId)
           setMessage(`Kirjauduttu sisään: ${response.data.username}`)
           setIsPositive(true)
           setShowMessage(true)

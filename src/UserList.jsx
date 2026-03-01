@@ -4,7 +4,7 @@ import userService from './services/User'
 import UserAdd from './UserAdd'
 import UserEdit from './UserEdit'
 
-const UserList = ({ setIsPositive, setMessage, setShowMessage }) => {
+const UserList = ({ setIsPositive, setMessage, setShowMessage, accessLevel }) => {
   const [users, setUsers] = useState([])
   const [lisäystila, setLisäystila] = useState(false)
   const [muokkaustila, setMuokkaustila] = useState(false)
@@ -48,6 +48,9 @@ const UserList = ({ setIsPositive, setMessage, setShowMessage }) => {
         })
     }
   }
+
+  const filtered = users
+    .filter(u => u.lastName.toLowerCase().indexOf(search) > -1)
 
   return (
     <>
@@ -97,21 +100,23 @@ const UserList = ({ setIsPositive, setMessage, setShowMessage }) => {
               </tr>
             </thead>
             <tbody>
-              {users && users
-                .filter(u => u.lastName.toLowerCase().indexOf(search) > -1)
-                .map(u => (
-                  <tr key={u.userId}>
-                    <td>{u.firstName}</td>
-                    <td>{u.lastName}</td>
-                    <td>{u.email}</td>
-                    <td>{u.userName}</td>
-                    <td>{u.accesslevelId}</td>
-                    <td>
-                      <button onClick={() => editUser(u)}>Edit</button>
-                      <button onClick={() => deleteUser(u)}>Delete</button>
-                    </td>
-                  </tr>
-                ))}
+              {filtered.map(u => (
+                <tr key={u.userId}>
+                  <td>{u.firstName}</td>
+                  <td>{u.lastName}</td>
+                  <td>{u.email}</td>
+                  <td>{u.userName}</td>
+                  <td>{u.accesslevelId}</td>
+                  <td>
+                    {accessLevel === 1 && (
+                      <>
+                        <button onClick={() => editUser(u)}>Edit</button>
+                        <button onClick={() => deleteUser(u)}>Delete</button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </>
