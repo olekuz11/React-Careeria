@@ -38,4 +38,12 @@ const update = employee => {
     return axios.put(`${baseUrl}/${employee.employeeId}`, employee, config)
 }
 
-export default { getAll, create, remove, update, setToken }
+const employeeService = {
+  getAll,
+  create,
+  remove,
+  update,
+  setToken
+};
+
+export default employeeService;

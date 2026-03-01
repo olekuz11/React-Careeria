@@ -38,4 +38,12 @@ const update = user => {
     return axios.put(`${baseUrl}/${user.userId}`, user, config)
 }
 
-export default { getAll, create, remove, update, setToken }
+const userService = {
+  getAll,
+  create,
+  remove,
+  update,
+  setToken
+};
+
+export default userService;

@@ -38,4 +38,12 @@ const update = product => {
     return axios.put(`${baseUrl}/${product.productId}`, product, config)
 }
 
-export default { getAll, create, remove, update, setToken }
+const productService = {
+  getAll,
+  create,
+  remove,
+  update,
+  setToken
+};
+
+export default productService;
