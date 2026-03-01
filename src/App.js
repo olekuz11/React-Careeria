@@ -84,6 +84,10 @@ const App = () => {
                 <Nav.Link>Asiakkaat</Nav.Link>
               </LinkContainer>
 
+              <LinkContainer to="/products">
+                <Nav.Link>Tuotteet</Nav.Link>
+              </LinkContainer>
+
               <LinkContainer to="/posts">
                 <Nav.Link>Postaukset</Nav.Link>
               </LinkContainer>
@@ -94,10 +98,11 @@ const App = () => {
             </Nav>
 
             <Nav className="ms-auto">
-              <LinkContainer to="/users">
-                <Nav.Link>Käyttäjät</Nav.Link>
-              </LinkContainer>
-
+              {accessLevel === 1 && (
+                <LinkContainer to="/users">
+                  <Nav.Link>Käyttäjät</Nav.Link>
+                </LinkContainer>
+              )}
               <button onClick={logout} style={{ margin: '8px 16px' }}>
                 Kirjaudu ulos ({loggedInUser})
               </button>
