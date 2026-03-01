@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'https://localhost:5001/api/customers'
+// const baseUrl = 'https://localhost:5001/api/customers'
+const baseUrl = 'https://northwindrestapi-olena-eyf2g4c5evdccmc7.canadacentral-01.azurewebsites.net/api/customers'
 
 let token = null
 
